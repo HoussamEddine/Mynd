@@ -12,7 +12,7 @@ import { Text } from '../components/base/Text';
 import BackgroundShape from '../components/BackgroundShape';
 import StaggeredEntryContainer from '../components/StaggeredEntryContainer';
 import Svg, { Circle } from 'react-native-svg';
-import AffirmationCard from '../components/AffirmationCard';
+
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Animated, {
@@ -27,7 +27,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import StatsGrid from '../components/StatsGrid';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { SemiCircularMoodSlider } from '../components/mood/MoodSlider';
 import * as Haptics from 'expo-haptics';
 import BeliefsScreen from '../screens/BeliefsScreen';
 import Icon from '../components/LucideIcon';

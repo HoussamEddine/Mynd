@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { theme } from '../constants'
 const { colors } = theme.foundations;;
-import BeliefItem from '../components/task/TaskItem';
+import BeliefCard from '../components/BeliefCard';
 import { FlatList } from 'react-native-gesture-handler';
 import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -316,8 +316,8 @@ const BeliefsScreen = () => {
     const belief = item as Belief;
     
     return (
-      <BeliefItem 
-        task={belief}
+      <BeliefCard 
+        belief={belief}
         isLast={index === listData.length - 2} // Check if it's the last belief before input
         onSelectAffirmation={handleSelectAffirmation}
       />

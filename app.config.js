@@ -28,16 +28,14 @@ module.exports = {
   updates: {
     url: 'https://u.expo.dev/YOUR-PROJECT-ID'
   },
-  runtimeVersion: {
-    policy: 'sdkVersion'
-  },
+  runtimeVersion: "1.0.0",
   assetBundlePatterns: [
     '**/*'
   ],
   ios: {
     supportsTablet: true,
     bundleIdentifier: 'com.nextbit.mynd',
-    googleServicesFile: './GoogleService-Info.plist',
+    googleServicesFile: './ios/Mynd/GoogleService-Info.plist',
     deploymentTarget: '14.0',
     config: {
       googleSignIn: {

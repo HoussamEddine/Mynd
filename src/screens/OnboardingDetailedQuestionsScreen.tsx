@@ -30,7 +30,7 @@ import Animated, {
   withRepeat,
   withSequence,
 } from 'react-native-reanimated';
-import RoulettePicker from '../components/RoulettePicker';
+
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { Text } from '../components/base/Text';
@@ -44,7 +44,7 @@ const maxModalHeight = screenHeight * 0.7;
 const { foundations, components, utils } = theme;
 
 // Pre-compute roulette items to prevent recreation on every render
-const AGE_ITEMS = Array.from({ length: 83 }, (_, i) => i + 18); // 18 to 100
+const AGE_ITEMS = Array.from({ length: 83 }, (_, i) => (i + 18).toString()); // 18 to 100
 const LANGUAGE_ITEMS = [
   "English",
   "German",
@@ -54,7 +54,7 @@ const LANGUAGE_ITEMS = [
 
 interface Question {
   id: string;
-  type: 'text' | 'roulette' | 'choice' | 'multiple' | 'belief' | 'text_long';
+  type: 'text' | 'choice' | 'multiple' | 'belief' | 'text_long';
   title: string;
   subtitle: string;
   options?: string[];
@@ -73,10 +73,10 @@ const questions: Question[] = [
   },
   {
     id: 'age',
-    type: 'roulette',
+    type: 'choice',
     title: "How old are you?",
     subtitle: "This helps us tailor content appropriately",
-    rouletteItems: AGE_ITEMS,
+    options: AGE_ITEMS,
   },
   {
     id: 'gender',
@@ -466,11 +466,7 @@ export default function OnboardingDetailedQuestionsScreen({
     switch (question.type) {
       case 'text':
         return validateName(answer);
-      case 'roulette':
-        if (question.id === 'age') {
-          return validateAge(answer);
-        }
-        return validateRequired(answer, question.title);
+
       case 'choice':
         if (answer === 'Other' && question.hasOther) {
           if (!otherText || otherText.trim().length === 0) {
@@ -741,13 +737,7 @@ export default function OnboardingDetailedQuestionsScreen({
     setValidationError(null);
   };
 
-  const handleRouletteChange = (value: string | number) => {
-    setAnswers(prev => ({
-      ...prev,
-      [currentQuestion.id]: value
-    }));
-    setValidationError(null);
-  };
+
 
   const handleTextInputChange = (text: string) => {
     const now = Date.now();
@@ -824,16 +814,7 @@ export default function OnboardingDetailedQuestionsScreen({
     return null;
   };
 
-  const renderRoulettePicker = () => (
-    <View style={[styles.rouletteContainer, { width: '100%', alignItems: 'center' }]}>
-      <RoulettePicker
-        items={currentQuestion.rouletteItems || []}
-        selectedValue={currentAnswer}
-        onValueChange={handleRouletteChange}
-        isLanguagePicker={currentQuestion.id === 'language'}
-      />
-    </View>
-  );
+
 
   const renderChoiceOptions = () => (
     <View style={styles.optionsWrapper}>
@@ -1105,11 +1086,11 @@ export default function OnboardingDetailedQuestionsScreen({
                     {
                       width: '100%',
                       alignItems: 'center',
-                      justifyContent: currentQuestion.type === 'roulette' ? 'center' : 'flex-start',
+                      justifyContent: 'flex-start',
                     },
                   ]}
                 >
-                  {currentQuestion.type === 'roulette' && renderRoulettePicker()}
+          
                   {currentQuestion.type === 'choice' && renderChoiceOptions()}
                   {currentQuestion.type === 'multiple' && renderMultipleChoice()}
                   {(currentQuestion.type === 'text' || currentQuestion.type === 'belief') && renderTextInput()}
@@ -1293,10 +1274,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
    
   },
-  rouletteContainer: {
-    alignItems: 'center',
-    marginVertical: 8,
-  },
+
   optionsWrapper: {
     position: 'relative',
     width: '100%',

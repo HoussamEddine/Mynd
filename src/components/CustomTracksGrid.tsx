@@ -170,7 +170,7 @@ const CustomTracksGrid: React.FC<CustomTracksGridProps> = ({ onTrackPress }) => 
     if (isSleepTrack) {
       return (
         <ImageBackground 
-          source={require('../../assets/images/Tracks/Sleep.jpg')}
+          source={require('../../assets/images/Tracks/Sleep.jpeg')}
           style={styles.sleepCard}
           imageStyle={styles.sleepCardImage}
         >
