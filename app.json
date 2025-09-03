@@ -1,0 +1,88 @@
+{
+  "expo": {
+    "name": "Mynd",
+    "slug": "mynd",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#7c3aed",
+      "imageAspectRatio": 0.5
+    },
+    "assetBundlePatterns": [
+      "assets/fonts/Poppins/*.ttf",
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nextbit.mynd",
+      "deploymentTarget": "13.4",
+      "splash": {
+        "image": "./assets/logo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#7c3aed",
+        "tabletImage": "./assets/logo.png",
+        "imageAspectRatio": 0.5
+      },
+      "config": {
+        "usesNonExemptEncryption": false,
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.593572121271-a8opvq97fq93hn27puv9nu25bafl5468"
+        },
+        "usesAppleSignIn": true
+      },
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.593572121271-a8opvq97fq93hn27puv9nu25bafl5468",
+              "mynd"
+            ]
+          }
+        ],
+        "NSMicrophoneUsageDescription": "This app requires access to the microphone for voice recording and voice cloning features.",
+        "NSSpeechRecognitionUsageDescription": "Mynd needs access to speech recognition to process your voice and create your personalized voice clone."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo.png",
+        "backgroundColor": "#7c3aed"
+      },
+      "package": "com.nextbit.mynd",
+      "splash": {
+        "image": "./assets/logo.png",
+        "resizeMode": "contain",
+        "imageAspectRatio": 0.4,
+        "backgroundColor": "#7c3aed",
+        "mdpi": "./assets/logo.png",
+        "hdpi": "./assets/logo.png",
+        "xhdpi": "./assets/logo.png",
+        "xxhdpi": "./assets/logo.png",
+        "xxxhdpi": "./assets/logo.png"
+      },
+      "googleServicesFile": "./google-services.json"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@react-native-voice/voice",
+        {
+          "microphonePermission": "This app uses the microphone to record your voice for cloning.",
+          "speechRecognitionPermission": "This app uses speech recognition to process your voice for cloning."
+        }
+      ],
+      "expo-apple-authentication"
+    ],
+    "scheme": "mynd",
+        "linking": {
+      "prefixes": ["mynd://"]
+    },
+    "owner": "nextbit"
+  }
+}

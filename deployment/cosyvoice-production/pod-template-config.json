@@ -1,0 +1,21 @@
+{
+  "name": "CosyVoice RTX A4000",
+  "description": "Pod template for running CosyVoice TTS system",
+  "containerImage": "nvidia/cuda:12.1-devel-ubuntu22.04",
+  "gpu": "RTX A4000",
+  "gpuCount": 1,
+  "containerDiskInGb": 50,
+  "volumeDiskInGb": 100,
+  "ports": {
+    "8000": "http",
+    "22": "tcp"
+  },
+  "startSSH": true,
+  "startJupyterLab": false,
+  "environmentVariables": {
+    "PYTHON_VERSION": "3.11",
+    "CUDA_VERSION": "12.1",
+    "COSYVOICE_REPO": "https://github.com/FunAudioLLM/CosyVoice.git"
+  },
+  "startupScript": "#!/bin/bash\n\n# Update system\napt-get update\napt-get install -y python3-pip git curl wget\n\n# Install Python dependencies\npip3 install torch torchaudio fastapi uvicorn numpy scipy librosa soundfile\n\n# Clone CosyVoice\ncd /workspace\ngit clone https://github.com/FunAudioLLM/CosyVoice.git\ncd CosyVoice\npip3 install -r requirements.txt\n\n# Start the API server\npython3 -m uvicorn cosyvoice_api_server:app --host 0.0.0.0 --port 8000\n"
+}

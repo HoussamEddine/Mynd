@@ -1,0 +1,45 @@
+{
+  "project_info": {
+    "project_number": "593572121271",
+    "project_id": "mynd-463818",
+    "storage_bucket": "mynd-463818.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593572121271:android:12345678901234567890ab",
+        "android_client_info": {
+          "package_name": "com.nextbit.mynd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593572121271-jsp95honujtv5g7d0lf33iabs8fud45i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "your-android-api-key"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593572121271-jsp95honujtv5g7d0lf33iabs8fud45i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "593572121271-a8opvq97fq93hn27puv9nu25bafl5468.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nextbit.mynd"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+} 
